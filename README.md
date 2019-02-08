@@ -9,6 +9,10 @@
 
 > The webpack loader for better replace less variables.
 
+## Why need it?
+
+We could use `modifyVars` option in `less-loader` for overriding less variables, but it is not friendly for developer (hot updating).
+
 - `vars.less`
 
 ```less
