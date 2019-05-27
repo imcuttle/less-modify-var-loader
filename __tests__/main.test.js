@@ -32,6 +32,14 @@ describe('lessModifyVarLoader', function() {
     )
   })
 
+  it('should inferred closest _override.less in dir/dir/dir', async function() {
+    let stats = await compiler('dir/dir/dir/main.less', { filePath: '_override.less' })
+    const output = stats.toJson().modules[0].source
+    expect(output).toMatchInlineSnapshot(
+      `"module.exports = \\"body {\\\\n  width: 40px;\\\\n  height: 100px;\\\\n  color: brown;\\\\n}\\\\n\\""`
+    )
+  })
+
   it('should use specific _override.less', async function() {
     let stats = await compiler('dir/main.less', { filePath: fixture('_override.less') })
     const output = stats.toJson().modules[0].source
